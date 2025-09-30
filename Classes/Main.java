@@ -4,6 +4,9 @@ import lesson19customexcptions.PracticeProject.exceptions.InsufficientFundsExcep
 import lesson19customexcptions.PracticeProject.exceptions.InvalidDepositException;
 import lesson19customexcptions.PracticeProject.exceptions.InvalidTransferException;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 enum BankOption{
@@ -18,6 +21,14 @@ enum BankOption{
 public class Main {
 
     public static void main(String[] args) {
+
+        File myFile = new File ("C:/Users/pault/OneDrive/Desktop/2025-RTT-23/JAVA-PRACTICE/BRO-CODE/brocode/src/lesson19customexcptions/PracticeProject/documentation/account-balance.txt");
+
+        if (myFile.exists()){
+
+            System.out.println("File exists: " + myFile.getName());
+
+        }
 
         BankAccount bankAccount = new BankAccount();
 
@@ -48,9 +59,9 @@ public class Main {
 
                 switch (bankOption) {
 
-                    case DEPOSIT -> makeDeposit(bankAccount, sc);
-                    case WITHDRAW -> makeWithdrawal(bankAccount, sc);
-                    case TRANSFER -> makeTransfer(bankAccount, sc);
+                    case DEPOSIT -> makeDeposit(bankAccount, sc, myFile);
+                    case WITHDRAW -> makeWithdrawal(bankAccount, sc, myFile);
+                    case TRANSFER -> makeTransfer(bankAccount, sc, myFile);
                     case EXIT -> System.exit(0);
 
                 }
@@ -66,7 +77,7 @@ public class Main {
 
     }
 
-    private static void makeDeposit(BankAccount bankAccount, Scanner sc) {
+    private static void makeDeposit(BankAccount bankAccount, Scanner sc, File file) {
 
         double initialDeposit;
 
@@ -78,15 +89,25 @@ public class Main {
 
             bankAccount.deposit(initialDeposit);
 
+            try (FileWriter myWriter = new FileWriter(file, true)) {
+
+                myWriter.write("| Deposit | $" + initialDeposit + " | Balance: $" + bankAccount.getBalance() + " |\n");
+
+            }
+
         }catch (InvalidDepositException e) {
 
             System.err.println("Error occurred!!!\n" + e.getMessage());
+
+        }catch (IOException e){
+
+            throw new RuntimeException(e);
 
         }
 
     }
 
-    private static void makeWithdrawal(BankAccount bankAccount, Scanner sc) {
+    private static void makeWithdrawal(BankAccount bankAccount, Scanner sc, File file) {
 
         double initialWithdrawal;
 
@@ -98,15 +119,25 @@ public class Main {
 
             bankAccount.withdraw(initialWithdrawal);
 
+            try (FileWriter myWriter = new FileWriter(file, true)) {
+
+                myWriter.write("| Withdrawal | $" + initialWithdrawal + " | Balance: $" + bankAccount.getBalance() + " |\n");
+
+            }
+
         }catch (InsufficientFundsException e){
 
             System.out.println("Error occurred!!!\n" + e.getMessage());
+
+        }catch (IOException e) {
+
+            throw new RuntimeException(e);
 
         }
 
     }
 
-    private static void makeTransfer(BankAccount bankAccount, Scanner sc) {
+    private static void makeTransfer(BankAccount bankAccount, Scanner sc, File file) {
 
         try {
 
@@ -116,12 +147,21 @@ public class Main {
 
             bankAccount.transfer(initialTransfer);
 
+            try (FileWriter myWriter = new FileWriter(file, true)) {
+
+                myWriter.write("| Transfer | $" + initialTransfer + " | Balance: $" + bankAccount.getBalance() + " |\n");
+
+            }
+
         }catch(InvalidTransferException e){
 
             System.err.println("Error occurred!!!\n" + e.getMessage());
 
-        }
+        }catch (IOException e){
 
+            throw new RuntimeException(e);
+
+        }
 
     }
 
