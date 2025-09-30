@@ -37,7 +37,7 @@ public class BankAccount {
 
         if (amount > balance) {
 
-            throw new InsufficientFundsException("Error! Insufficient funds. Withdraw cannot exceed your balance.");
+            throw new InsufficientFundsException("Insufficient funds. Withdraw cannot exceed your balance.");
 
         }
 
