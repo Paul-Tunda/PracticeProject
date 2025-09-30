@@ -2,6 +2,7 @@ package lesson19customexcptions.PracticeProject.Classes;
 
 import lesson19customexcptions.PracticeProject.exceptions.InsufficientFundsException;
 import lesson19customexcptions.PracticeProject.exceptions.InvalidDepositException;
+import lesson19customexcptions.PracticeProject.exceptions.InvalidTransferException;
 
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ enum BankOption{
 
     DEPOSIT,
     WITHDRAW,
+    TRANSFER,
     EXIT
 
 }
@@ -48,6 +50,7 @@ public class Main {
 
                     case DEPOSIT -> makeDeposit(bankAccount, sc);
                     case WITHDRAW -> makeWithdrawal(bankAccount, sc);
+                    case TRANSFER -> makeTransfer(bankAccount, sc);
                     case EXIT -> System.exit(0);
 
                 }
@@ -100,6 +103,25 @@ public class Main {
             System.out.println("Error occurred!!!\n" + e.getMessage());
 
         }
+
+    }
+
+    private static void makeTransfer(BankAccount bankAccount, Scanner sc) {
+
+        try {
+
+            System.out.println("Enter amount to transfer: ");
+            double initialTransfer = sc.nextDouble();
+            sc.nextLine();
+
+            bankAccount.transfer(initialTransfer);
+
+        }catch(InvalidTransferException e){
+
+            System.err.println("Error occurred!!!\n" + e.getMessage());
+
+        }
+
 
     }
 

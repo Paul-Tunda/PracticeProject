@@ -2,7 +2,7 @@ package lesson19customexcptions.PracticeProject.Classes;
 
 import lesson19customexcptions.PracticeProject.exceptions.InsufficientFundsException;
 import lesson19customexcptions.PracticeProject.exceptions.InvalidDepositException;
-import lesson19customexcptions.PracticeProject.exceptions.InvalidTransactionException;
+import lesson19customexcptions.PracticeProject.exceptions.InvalidTransferException;
 
 public class BankAccount {
 
@@ -48,15 +48,15 @@ public class BankAccount {
 
     }
 
-    public void transfer(double amount) throws InvalidTransactionException {
+    public void transfer(double amount) throws InvalidTransferException {
 
         if (amount <= 0.0) {
 
-            throw new InvalidTransactionException("Invalid transfer amount! Amount must be greater than 0.");
+            throw new InvalidTransferException("Invalid transfer amount! Amount must be greater than 0.");
 
         }else if(amount > balance) {
 
-            throw new InvalidTransactionException("Invalid transfer amount! Amount must be less than your balance.");
+            throw new InvalidTransferException("Invalid transfer amount! Amount must be less than your balance.");
 
         }
 
