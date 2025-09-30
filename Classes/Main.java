@@ -19,6 +19,8 @@ public class Main {
 
         BankAccount bankAccount = new BankAccount();
 
+        System.out.println("Welcome,");
+
         System.out.println("Account balance: $" + bankAccount.getBalance());
 
         Scanner sc = new Scanner(System.in);
@@ -44,26 +46,28 @@ public class Main {
 
                 switch (bankOption) {
 
-                    case DEPOSIT -> makeDeposit(bankAccount);
-                    case WITHDRAW -> makeWithdrawal(bankAccount);
+                    case DEPOSIT -> makeDeposit(bankAccount, sc);
+                    case WITHDRAW -> makeWithdrawal(bankAccount, sc);
                     case EXIT -> System.exit(0);
-                    default -> System.out.println("Invalid option");
 
                 }
+
             } catch (IllegalArgumentException e) {
 
-                throw new RuntimeException("Invalid option. You can DEPOSIT, WITHDRAW, or EXIT app.");
+                System.err.println("Invalid option. You can DEPOSIT, WITHDRAW, or EXIT app.");
+                System.out.println();
+
             }
 
         }
 
     }
 
-    private static void makeDeposit(BankAccount bankAccount) {
+    private static void makeDeposit(BankAccount bankAccount, Scanner sc) {
 
         double initialDeposit;
 
-        try(Scanner sc = new Scanner(System.in)) {
+        try {
 
             System.out.println("Enter deposit amount: ");
             initialDeposit = sc.nextDouble();
@@ -79,11 +83,11 @@ public class Main {
 
     }
 
-    private static void makeWithdrawal(BankAccount bankAccount) {
+    private static void makeWithdrawal(BankAccount bankAccount, Scanner sc) {
 
         double initialWithdrawal;
 
-        try(Scanner sc = new Scanner(System.in)) {
+        try{
 
             System.out.println("Enter withdrawal amount: ");
             initialWithdrawal = sc.nextDouble();
