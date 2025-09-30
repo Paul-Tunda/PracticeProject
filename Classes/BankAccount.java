@@ -2,6 +2,7 @@ package lesson19customexcptions.PracticeProject.Classes;
 
 import lesson19customexcptions.PracticeProject.exceptions.InsufficientFundsException;
 import lesson19customexcptions.PracticeProject.exceptions.InvalidDepositException;
+import lesson19customexcptions.PracticeProject.exceptions.InvalidTransactionException;
 
 public class BankAccount {
 
@@ -43,6 +44,24 @@ public class BankAccount {
 
         balance -= amount;
         System.out.println("Withdraw of $" + amount + " successfully processed.");
+        System.out.println("Account balance: $" + balance);
+
+    }
+
+    public void transfer(double amount) throws InvalidTransactionException {
+
+        if (amount <= 0.0) {
+
+            throw new InvalidTransactionException("Invalid transfer amount! Amount must be greater than 0.");
+
+        }else if(amount > balance) {
+
+            throw new InvalidTransactionException("Invalid transfer amount! Amount must be less than your balance.");
+
+        }
+
+        balance -= amount;
+        System.out.println("Transfer of $" + amount + " successfully processed.");
         System.out.println("Account balance: $" + balance);
 
     }
