@@ -22,7 +22,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        File myFile = new File ("C:/Users/pault/OneDrive/Desktop/2025-RTT-23/JAVA-PRACTICE/BRO-CODE/brocode/src/lesson19customexcptions/PracticeProject/documentation/account-balance.txt");
+        String osName = System.getProperty("os.name").toLowerCase();
+
+        File myFile;
+
+        if (osName.contains("win")) {
+
+            myFile = new File ("C:/Users/pault/OneDrive/Desktop/2025-RTT-23/JAVA-PRACTICE/BRO-CODE/brocode/src/lesson19customexcptions/PracticeProject/documentation/account-balance.txt");
+
+        }else if (osName.contains("mac")) {
+
+            myFile = new File("/Users/tundapaul/Library/CloudStorage/OneDrive-Personal/Desktop/2025-RTT-23/JAVA-PRACTICE/BRO-CODE/brocode/src/lesson19customexcptions/PracticeProject/documentation/account-balance.txt");
+
+        } else {
+
+            throw new UnsupportedOperationException("OS not supported: " + osName);
+
+        }
+
 
         if (myFile.exists()){
 

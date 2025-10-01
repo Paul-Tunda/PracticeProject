@@ -2,3 +2,4 @@
 | Deposit | $5456.65 | Balance: $6881.879999999999 |
 | Withdrawal | $200.23 | Balance: $6681.65 |
 | Transfer | $200.12 | Balance: $6481.53 |
+| Deposit | $1104.29 | Balance: $1104.29 |
