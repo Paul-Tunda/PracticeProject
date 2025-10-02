@@ -1,6 +1,6 @@
-| Deposit | $1425.23 | Balance: $1425.23 |
-| Deposit | $5456.65 | Balance: $6881.879999999999 |
-| Withdrawal | $200.23 | Balance: $6681.65 |
-| Transfer | $200.12 | Balance: $6481.53 |
-| Deposit | $1104.29 | Balance: $1104.29 |
-| Deposit | $100.0 | Balance: $100.0 |
+| Date                           | Description                | Type                   | Amount                | Balance               |
+| ------------------------------ | -------------------------- | ---------------------- | --------------------- | --------------------- |
+| Tues Oct 2, 2025               | Money received             | Deposit                | 450.77                | 450.77                |
+| Tues Oct 2, 2025               | Payment from work          | Deposit                | 5000.0                | 5450.77               |
+| Tues Oct 2, 2025               | Online Transfer            | Withdrawal             | 200.22                | 5250.55               |
+| Tues Oct 2, 2025               | To Friend/Family           | Transfer               | 100.11                | 5150.4400000000005    |
