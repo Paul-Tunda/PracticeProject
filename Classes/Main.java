@@ -134,13 +134,7 @@ public class Main {
 
             try (FileWriter myWriter = new FileWriter(file, true)) {
 
-                myWriter.write(
-                        "| " + padRight(dateStr, 30) +
-                                " | " + padRight(description, 26) +
-                                " | " + padRight(type, 22) +
-                                " | " + padRight(amountStr, 21) +
-                                " | " + padRight(balanceStr, 21) + " |\n"
-                );
+                myWriter.write("| " + padRight(dateStr, 30) + " | " + padRight(description, 26) + " | " + padRight(type, 22) + " | " + padRight(amountStr, 21) + " | " + padRight(balanceStr, 21) + " |\n");
 
             }
 
@@ -190,13 +184,7 @@ public class Main {
             String balanceStr = String.valueOf(bankAccount.getBalance());
 
             try (FileWriter myWriter = new FileWriter(file, true)) {
-                myWriter.write(
-                        "| " + padRight(dateStr, 30) +
-                                " | " + padRight(description, 26) +
-                                " | " + padRight(type, 22) +
-                                " | " + padRight(amountStr, 21) +
-                                " | " + padRight(balanceStr, 21) + " |\n"
-                );
+                myWriter.write("| " + padRight(dateStr, 30) + " | " + padRight(description, 26) + " | " + padRight(type, 22) + " | " + padRight(amountStr, 21) + " | " + padRight(balanceStr, 21) + " |\n");
             }
 
         } catch (InsufficientFundsException e) {
@@ -239,13 +227,7 @@ public class Main {
             String balanceStr = String.valueOf(bankAccount.getBalance());
 
             try (FileWriter myWriter = new FileWriter(file, true)) {
-                myWriter.write(
-                        "| " + padRight(dateStr, 30) +
-                                " | " + padRight(description, 26) +
-                                " | " + padRight(type, 22) +
-                                " | " + padRight(amountStr, 21) +
-                                " | " + padRight(balanceStr, 21) + " |\n"
-                );
+                myWriter.write("| " + padRight(dateStr, 30) + " | " + padRight(description, 26) +  " | " + padRight(type, 22) + " | " + padRight(amountStr, 21) + " | " + padRight(balanceStr, 21) + " |\n");
             }
 
         } catch (InvalidTransferException e) {
